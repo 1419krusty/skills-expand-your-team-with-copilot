@@ -6,7 +6,7 @@ from fastapi import APIRouter, HTTPException
 from typing import Dict, Any
 import hashlib
 
-from mock_database import teachers_collection
+from ..database import teachers_collection
 
 router = APIRouter(
     prefix="/auth",
