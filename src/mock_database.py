@@ -1,15 +1,97 @@
 """
-MongoDB database configuration and setup for Mergington High School API
+Mock database implementation for testing without MongoDB
 """
 
-from pymongo import MongoClient
 from argon2 import PasswordHasher
 
-# Connect to MongoDB
-client = MongoClient('mongodb://localhost:27017/')
-db = client['mergington_high']
-activities_collection = db['activities']
-teachers_collection = db['teachers']
+# Mock MongoDB collections as dictionaries
+activities_data = {}
+teachers_data = {}
+
+class MockCollection:
+    def __init__(self, data_dict):
+        self.data = data_dict
+    
+    def count_documents(self, query):
+        return len(self.data)
+    
+    def insert_one(self, document):
+        _id = document.get('_id')
+        self.data[_id] = document
+    
+    def find_one(self, query):
+        if '_id' in query:
+            return self.data.get(query['_id'])
+        return None
+    
+    def find(self, query=None):
+        if not query:
+            return [{'_id': key, **value} for key, value in self.data.items()]
+        
+        # Handle day filter
+        if 'schedule_details.days' in query:
+            target_days = query['schedule_details.days'].get('$in', [])
+            result = []
+            for key, doc in self.data.items():
+                if 'schedule_details' in doc:
+                    doc_days = doc['schedule_details'].get('days', [])
+                    if any(day in doc_days for day in target_days):
+                        result.append({'_id': key, **doc})
+            return result
+        
+        # Handle time filters
+        result = []
+        for key, doc in self.data.items():
+            include = True
+            
+            if 'schedule_details.start_time' in query:
+                start_filter = query['schedule_details.start_time'].get('$gte')
+                if start_filter and 'schedule_details' in doc:
+                    doc_start = doc['schedule_details'].get('start_time', '')
+                    if doc_start < start_filter:
+                        include = False
+            
+            if 'schedule_details.end_time' in query:
+                end_filter = query['schedule_details.end_time'].get('$lte')
+                if end_filter and 'schedule_details' in doc:
+                    doc_end = doc['schedule_details'].get('end_time', '')
+                    if doc_end > end_filter:
+                        include = False
+            
+            if include:
+                result.append({'_id': key, **doc})
+        
+        return result
+    
+    def update_one(self, query, update):
+        if '_id' in query:
+            doc_id = query['_id']
+            if doc_id in self.data:
+                if '$push' in update:
+                    for field, value in update['$push'].items():
+                        if field not in self.data[doc_id]:
+                            self.data[doc_id][field] = []
+                        self.data[doc_id][field].append(value)
+                if '$pull' in update:
+                    for field, value in update['$pull'].items():
+                        if field in self.data[doc_id] and isinstance(self.data[doc_id][field], list):
+                            if value in self.data[doc_id][field]:
+                                self.data[doc_id][field].remove(value)
+                return type('Result', (), {'modified_count': 1})()
+        return type('Result', (), {'modified_count': 0})()
+    
+    def aggregate(self, pipeline):
+        # Mock aggregation for days
+        days = set()
+        for doc in self.data.values():
+            if 'schedule_details' in doc and 'days' in doc['schedule_details']:
+                days.update(doc['schedule_details']['days'])
+        
+        return [{'_id': day} for day in sorted(days)]
+
+# Create mock collections
+activities_collection = MockCollection(activities_data)
+teachers_collection = MockCollection(teachers_data)
 
 # Methods
 def hash_password(password):
@@ -197,4 +279,3 @@ initial_teachers = [
         "role": "admin"
     }
 ]
-

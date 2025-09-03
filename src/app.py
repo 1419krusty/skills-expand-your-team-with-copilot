@@ -10,7 +10,8 @@ from fastapi.staticfiles import StaticFiles
 from fastapi.responses import RedirectResponse
 import os
 from pathlib import Path
-from .backend import routers, database
+import mock_database as database
+from backend import routers
 
 # Initialize web host
 app = FastAPI(
