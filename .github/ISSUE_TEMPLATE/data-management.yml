@@ -1,0 +1,155 @@
+name: Data Management Request
+description: Request changes to student data, registrations, or system data management
+title: "[DATA] "
+labels: ["data-management", "needs-triage"]
+assignees:
+  - copilot
+
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Use this template for requests related to managing student data, registration information, or other data-related tasks.
+
+  - type: dropdown
+    id: request-type
+    attributes:
+      label: What type of data management do you need?
+      description: Select the type of data request
+      options:
+        - Export student registration data
+        - Import student information
+        - Clear/reset registration data
+        - Fix incorrect registration information
+        - Generate reports
+        - Backup or restore data
+        - Add bulk student registrations
+        - Remove student registrations
+    validations:
+      required: true
+
+  - type: textarea
+    id: data-request-details
+    attributes:
+      label: Detailed Request
+      description: Explain exactly what data management task you need
+      placeholder: |
+        Example: "Export a list of all students registered for Drama Club with their email addresses so I can send them information about the upcoming performance."
+    validations:
+      required: true
+
+  - type: input
+    id: activities-involved
+    attributes:
+      label: Activities Involved
+      description: Which activities does this request relate to? (Leave blank if it applies to all activities)
+      placeholder: "Example: Drama Club, Chess Team, Science Fair Committee"
+
+  - type: dropdown
+    id: data-format
+    attributes:
+      label: Preferred Data Format (if applicable)
+      description: If you need data exported, what format would be most helpful?
+      options:
+        - Not applicable
+        - Excel/Spreadsheet file
+        - PDF document
+        - Email list
+        - Printed list
+        - CSV file
+        - Don't know - whatever is easiest
+
+  - type: textarea
+    id: specific-information
+    attributes:
+      label: Specific Information Needed
+      description: What specific student or activity information do you need included?
+      placeholder: |
+        Examples:
+        - Student names and email addresses
+        - Registration dates
+        - Activity preferences
+        - Contact information
+        - Grade levels
+        - Teacher assignments
+      
+  - type: dropdown
+    id: urgency
+    attributes:
+      label: When do you need this completed?
+      description: What's your timeline for this data request?
+      options:
+        - Today - urgent
+        - This week
+        - Next week
+        - End of month
+        - No specific deadline
+    validations:
+      required: true
+
+  - type: textarea
+    id: reason-for-request
+    attributes:
+      label: Reason for Request
+      description: Why do you need this data? This helps us understand the context and provide the most helpful format.
+      placeholder: |
+        Examples:
+        - Need to contact students about schedule changes
+        - Creating attendance sheets for activities
+        - Sending permission slips to parents
+        - Generating reports for administration
+        - Planning for new semester activities
+    validations:
+      required: true
+
+  - type: checkboxes
+    id: privacy-confirmation
+    attributes:
+      label: Privacy and Security Confirmation
+      description: Please confirm you understand data privacy requirements
+      options:
+        - label: I understand that student data must be kept confidential and secure
+          required: true
+        - label: I will only use this data for legitimate educational purposes
+          required: true
+        - label: I will not share student information with unauthorized individuals
+          required: true
+
+  - type: textarea
+    id: special-requirements
+    attributes:
+      label: Special Requirements or Constraints
+      description: Any special considerations for handling this data?
+      placeholder: |
+        Examples:
+        - Need to exclude certain students for privacy reasons
+        - Only include students with signed permission forms
+        - Data needed for specific date range only
+        - Special formatting requirements for external systems
+
+  - type: textarea
+    id: delivery-method
+    attributes:
+      label: How should the data be delivered to you?
+      description: How would you like to receive the information?
+      placeholder: |
+        Examples:
+        - Email attachment
+        - Download link
+        - Printed and delivered to classroom
+        - Available through teacher portal
+        - USB drive
+
+  - type: textarea
+    id: acceptance-criteria
+    attributes:
+      label: How will we know this request is complete?
+      description: What should you have when this data request is fulfilled?
+      placeholder: |
+        Example:
+        - Excel file with all Drama Club students and their email addresses
+        - Data includes student names, emails, and registration dates
+        - File is delivered via secure email attachment
+        - Data is current as of today's date
+    validations:
+      required: true

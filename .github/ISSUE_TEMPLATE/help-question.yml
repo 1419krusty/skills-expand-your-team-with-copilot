@@ -1,0 +1,87 @@
+name: General Question or Help
+description: Ask a question or get help with the activities system
+title: "[HELP] "
+labels: ["question", "help-needed"]
+assignees:
+  - copilot
+
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Use this template when you need help understanding how to use the activities system or have questions about its features.
+
+  - type: textarea
+    id: question
+    attributes:
+      label: Your Question
+      description: What would you like help with?
+      placeholder: |
+        Examples:
+        - How can I see which students are registered for my activities?
+        - Is there a way to send messages to all students in an activity?
+        - How do I update the meeting time for Chess Club?
+        - Can students register for multiple activities at the same time?
+    validations:
+      required: true
+
+  - type: dropdown
+    id: question-category
+    attributes:
+      label: What area is your question about?
+      description: Select the area you need help with
+      options:
+        - Using the activities system as a teacher
+        - How students use the system
+        - Managing activity information
+        - Understanding reports or data
+        - Technical issues or errors
+        - Account access or login
+        - System features and capabilities
+        - Best practices or recommendations
+    validations:
+      required: true
+
+  - type: textarea
+    id: what-youve-tried
+    attributes:
+      label: What have you already tried?
+      description: Tell us what you've attempted so we can provide better help
+      placeholder: |
+        Example: "I tried clicking on the activity name but it just shows the description. I looked in the teacher menu but don't see a student list option."
+
+  - type: textarea
+    id: context
+    attributes:
+      label: Additional Context
+      description: Any other information that might help us answer your question?
+      placeholder: |
+        Examples:
+        - Which activity or activities this relates to
+        - What you're trying to accomplish
+        - When you need this information
+        - Whether this is urgent
+
+  - type: dropdown
+    id: urgency
+    attributes:
+      label: How quickly do you need an answer?
+      description: What's your timeline for getting help?
+      options:
+        - No rush - when convenient
+        - This week would be helpful
+        - Within a few days
+        - Today if possible
+        - Urgent - blocking important tasks
+
+  - type: textarea
+    id: ideal-outcome
+    attributes:
+      label: What would be the ideal solution?
+      description: How would you like this question to be resolved?
+      placeholder: |
+        Examples:
+        - Step-by-step instructions for how to do this task
+        - An explanation of how the feature works
+        - A recommendation for the best approach
+        - Information about whether this is possible with the current system

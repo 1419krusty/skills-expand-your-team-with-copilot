@@ -1,0 +1,93 @@
+name: Bug Report
+description: Report a bug or issue with the school activities system
+title: "[BUG] "
+labels: ["bug", "needs-triage"]
+assignees:
+  - copilot
+
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for taking the time to report a bug! Please provide as much detail as possible to help us understand and fix the issue.
+
+  - type: textarea
+    id: problem-description
+    attributes:
+      label: Problem Description
+      description: What is going wrong? Describe the issue you're experiencing.
+      placeholder: "Example: Students cannot sign up for Drama Club activities - the signup button doesn't work"
+    validations:
+      required: true
+
+  - type: textarea
+    id: steps-to-reproduce
+    attributes:
+      label: Steps to Reproduce
+      description: How can we recreate this problem?
+      placeholder: |
+        1. Go to the activities page
+        2. Click on 'Drama Club'
+        3. Click the 'Sign Up' button
+        4. Nothing happens
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected-behavior
+    attributes:
+      label: Expected Behavior
+      description: What should happen instead?
+      placeholder: "Example: The student should be able to register for the Drama Club and receive a confirmation message"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: user-type
+    attributes:
+      label: Who is affected?
+      description: Which users are experiencing this issue?
+      options:
+        - Students
+        - Teachers
+        - Both students and teachers
+        - System administrators
+    validations:
+      required: true
+
+  - type: dropdown
+    id: urgency
+    attributes:
+      label: How urgent is this issue?
+      description: How quickly does this need to be fixed?
+      options:
+        - Low - Can wait until next update
+        - Medium - Should be fixed within a week
+        - High - Needs to be fixed within 1-2 days
+        - Critical - Blocking important school activities
+    validations:
+      required: true
+
+  - type: textarea
+    id: additional-context
+    attributes:
+      label: Additional Context
+      description: |
+        Any other information that might help us understand or fix the issue?
+        - Screenshots (if applicable)
+        - Error messages you see
+        - Which browser you're using
+        - Any related activities or features that might be involved
+      placeholder: "Add any additional details, screenshots, or context here"
+
+  - type: textarea
+    id: acceptance-criteria
+    attributes:
+      label: How will we know this is fixed?
+      description: What should work correctly after we fix this bug?
+      placeholder: |
+        - Students can successfully sign up for Drama Club
+        - Confirmation message appears after signup
+        - Student names appear in the activity roster
+    validations:
+      required: true

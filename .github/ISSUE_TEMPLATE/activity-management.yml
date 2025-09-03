@@ -1,0 +1,156 @@
+name: Activity Management Request
+description: Request to add, edit, or remove school activities
+title: "[ACTIVITY] "
+labels: ["activity-management", "needs-triage"]
+assignees:
+  - copilot
+
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Use this template to request changes to school activities - adding new ones, editing existing ones, or removing outdated activities.
+
+  - type: dropdown
+    id: request-type
+    attributes:
+      label: What type of activity change do you need?
+      description: Select the type of change you're requesting
+      options:
+        - Add a new activity
+        - Edit an existing activity
+        - Remove an activity
+        - Change activity schedule/timing
+        - Update activity information
+    validations:
+      required: true
+
+  - type: input
+    id: activity-name
+    attributes:
+      label: Activity Name
+      description: What is the name of the activity?
+      placeholder: "Example: Drama Club, Chess Team, Science Fair Committee"
+    validations:
+      required: true
+
+  - type: textarea
+    id: activity-details
+    attributes:
+      label: Activity Details
+      description: Please provide complete information about the activity
+      placeholder: |
+        For new activities, include:
+        - Activity description
+        - Meeting days and times
+        - Location where it meets
+        - Teacher supervisor
+        - Category (Sports, Arts, Academic, Community, Technology)
+        - Any requirements or prerequisites
+        - Maximum number of students
+
+        For changes to existing activities, describe what needs to be updated.
+    validations:
+      required: true
+
+  - type: dropdown
+    id: activity-category
+    attributes:
+      label: Activity Category
+      description: Which category does this activity belong to?
+      options:
+        - Sports
+        - Arts
+        - Academic
+        - Community
+        - Technology
+        - Other
+    validations:
+      required: true
+
+  - type: textarea
+    id: schedule-information
+    attributes:
+      label: Schedule Information
+      description: When does this activity meet?
+      placeholder: |
+        Example:
+        - Days: Monday and Wednesday
+        - Time: 3:30 PM - 5:00 PM
+        - Location: Art Room 204
+        - Duration: Full school year / Fall semester only / etc.
+
+  - type: input
+    id: supervisor
+    attributes:
+      label: Teacher Supervisor
+      description: Which teacher supervises this activity?
+      placeholder: "Example: Ms. Johnson, Mr. Smith"
+
+  - type: textarea
+    id: reason-for-change
+    attributes:
+      label: Reason for this change
+      description: Why is this activity change needed?
+      placeholder: |
+        Example reasons:
+        - New student interest in this area
+        - Teacher available to supervise
+        - Activity no longer has enough participation
+        - Schedule conflict with other activities
+        - Activity information is outdated
+    validations:
+      required: true
+
+  - type: dropdown
+    id: timing
+    attributes:
+      label: When should this change take effect?
+      description: What's the timeline for implementing this change?
+      options:
+        - Immediately
+        - Next week
+        - Next semester
+        - Next school year
+        - No rush - when convenient
+    validations:
+      required: true
+
+  - type: textarea
+    id: impact-considerations
+    attributes:
+      label: Impact on Students
+      description: How will this change affect current or potential students?
+      placeholder: |
+        Consider:
+        - Students already registered for this activity
+        - Students who might want to join
+        - Schedule conflicts with other activities
+        - Space or resource requirements
+
+  - type: textarea
+    id: additional-requirements
+    attributes:
+      label: Additional Requirements
+      description: Any special considerations or requirements for this activity?
+      placeholder: |
+        Examples:
+        - Special equipment needed
+        - Permission slips required
+        - Skill prerequisites
+        - Cost or fees involved
+        - Transportation needs
+
+  - type: textarea
+    id: acceptance-criteria
+    attributes:
+      label: How will we know this is complete?
+      description: What should be working correctly after this change is made?
+      placeholder: |
+        Example:
+        - Drama Club appears in the activities list under "Arts" category
+        - Shows meeting time as Monday/Wednesday 3:30-5:00 PM
+        - Students can sign up and see Ms. Johnson as supervisor
+        - Activity appears in the correct day filters
+    validations:
+      required: true

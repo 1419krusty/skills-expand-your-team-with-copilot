@@ -1,0 +1,144 @@
+name: UI/Interface Improvement
+description: Request improvements to the website's appearance or user experience
+title: "[UI] "
+labels: ["ui-improvement", "enhancement", "needs-triage"]
+assignees:
+  - copilot
+
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Use this template to suggest improvements to how the activities website looks or works for users.
+
+  - type: textarea
+    id: current-problem
+    attributes:
+      label: Current Problem
+      description: What about the current interface is difficult or confusing?
+      placeholder: |
+        Example: The activity cards are too small and hard to read. Students have trouble seeing the meeting times and locations.
+    validations:
+      required: true
+
+  - type: textarea
+    id: proposed-improvement
+    attributes:
+      label: Proposed Improvement
+      description: How would you like the interface to be improved?
+      placeholder: |
+        Example: Make the activity cards larger with bigger text. Put the meeting time and location in bold so they're easier to see.
+    validations:
+      required: true
+
+  - type: dropdown
+    id: area-of-improvement
+    attributes:
+      label: Which part of the website needs improvement?
+      description: Select the area you want to improve
+      options:
+        - Activity cards/listings
+        - Search and filtering
+        - Sign-up process
+        - Teacher login area
+        - Overall page layout
+        - Colors and styling
+        - Mobile/tablet experience
+        - Navigation between pages
+        - Error messages
+        - Loading indicators
+    validations:
+      required: true
+
+  - type: dropdown
+    id: affected-users
+    attributes:
+      label: Who would benefit from this improvement?
+      description: Which users are having difficulty with the current interface?
+      options:
+        - Students
+        - Teachers
+        - Both students and teachers
+        - All users
+    validations:
+      required: true
+
+  - type: textarea
+    id: user-feedback
+    attributes:
+      label: User Feedback
+      description: What have students or teachers said about this part of the interface?
+      placeholder: |
+        Example: "Several students mentioned they can't easily see which activities meet after school vs. weekends" or "Teachers find the login button too small"
+
+  - type: dropdown
+    id: device-considerations
+    attributes:
+      label: Device Considerations
+      description: Is this problem more noticeable on certain devices?
+      options:
+        - All devices have this problem
+        - Mainly an issue on phones
+        - Mainly an issue on tablets
+        - Mainly an issue on computers
+        - Not device-specific
+    validations:
+      required: true
+
+  - type: textarea
+    id: visual-examples
+    attributes:
+      label: Visual Examples or References
+      description: |
+        Do you have examples of how this should look?
+        - Screenshots of the current problem
+        - Examples from other websites that work well
+        - Simple drawings or descriptions of your ideal layout
+      placeholder: "Describe or attach examples of what would work better"
+
+  - type: dropdown
+    id: priority
+    attributes:
+      label: How important is this improvement?
+      description: How much would this improvement help users?
+      options:
+        - Nice to have - small improvement
+        - Helpful - would make things easier
+        - Important - current interface is confusing
+        - Critical - current interface prevents users from completing tasks
+    validations:
+      required: true
+
+  - type: textarea
+    id: accessibility-considerations
+    attributes:
+      label: Accessibility Considerations
+      description: Would this improvement help users with disabilities or special needs?
+      placeholder: |
+        Example: Larger text would help students with vision difficulties, or better color contrast would help with readability
+
+  - type: textarea
+    id: acceptance-criteria
+    attributes:
+      label: How will we know this improvement is successful?
+      description: What should work better after making this change?
+      placeholder: |
+        Example:
+        - Activity information is easy to read on all devices
+        - Students can quickly see meeting times without squinting
+        - Sign-up buttons are clearly visible and easy to click
+        - Teachers report fewer questions about finding information
+    validations:
+      required: true
+
+  - type: textarea
+    id: implementation-suggestions
+    attributes:
+      label: Implementation Suggestions (Optional)
+      description: Any suggestions for how this could be implemented?
+      placeholder: |
+        Examples:
+        - Increase font size from 12px to 16px
+        - Use bold text for important information
+        - Add more spacing between elements
+        - Change button color to make it more visible
