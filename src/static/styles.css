@@ -1,15 +1,15 @@
 /* Color palette */
 :root {
-  /* Primary colors */
-  --primary: #1a237e;
-  --primary-light: #534bae;
-  --primary-dark: #000051;
+  /* Primary colors - School colors: white and lime green */
+  --primary: #32CD32;
+  --primary-light: #7CFC00;
+  --primary-dark: #228B22;
   --primary-text: #ffffff;
 
   /* Secondary colors */
-  --secondary: #ff6f00;
-  --secondary-light: #ffa040;
-  --secondary-dark: #c43e00;
+  --secondary: #32CD32;
+  --secondary-light: #7CFC00;
+  --secondary-dark: #228B22;
   --secondary-text: #ffffff;
 
   /* Neutral colors */
@@ -62,6 +62,51 @@ header {
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+/* Mascot container and styling */
+.mascot-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 10px;
+  flex-wrap: wrap;
+}
+
+.mascot-img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  transition: transform 0.3s ease, border-color 0.3s ease;
+  background: rgba(255, 255, 255, 0.1);
+  padding: 2px;
+}
+
+.mascot-img:hover {
+  transform: scale(1.2) rotate(10deg);
+  border-color: rgba(255, 255, 255, 0.8);
+}
+
+.mascot-placeholder {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  background: rgba(255, 255, 255, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  transition: transform 0.3s ease, border-color 0.3s ease;
+  cursor: pointer;
+}
+
+.mascot-placeholder:hover {
+  transform: scale(1.2) rotate(10deg);
+  border-color: rgba(255, 255, 255, 0.8);
+  background: rgba(255, 255, 255, 0.2);
 }
 
 header h1 {
@@ -667,4 +712,55 @@ footer {
 
 #logout-button:hover {
   background-color: rgba(255, 255, 255, 0.3);
+}
+
+/* Animated Git branch background */
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  background: linear-gradient(135deg, #ffffff 0%, #f8fff8 100%);
+  background-image: 
+    linear-gradient(90deg, rgba(50, 205, 50, 0.1) 1px, transparent 1px),
+    linear-gradient(rgba(50, 205, 50, 0.1) 1px, transparent 1px);
+  background-size: 60px 60px;
+  animation: gitBranches 20s linear infinite;
+}
+
+@keyframes gitBranches {
+  0% {
+    transform: translateX(0) translateY(0);
+  }
+  100% {
+    transform: translateX(60px) translateY(60px);
+  }
+}
+
+/* Add some git branch-like lines */
+body::after {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  background-image: 
+    linear-gradient(45deg, transparent 40%, rgba(50, 205, 50, 0.15) 42%, rgba(50, 205, 50, 0.15) 44%, transparent 46%),
+    linear-gradient(-45deg, transparent 40%, rgba(50, 205, 50, 0.1) 42%, rgba(50, 205, 50, 0.1) 44%, transparent 46%);
+  background-size: 120px 120px;
+  animation: gitBranchesReverse 25s linear infinite reverse;
+}
+
+@keyframes gitBranchesReverse {
+  0% {
+    transform: translateX(0) translateY(0);
+  }
+  100% {
+    transform: translateX(-120px) translateY(-120px);
+  }
 }
