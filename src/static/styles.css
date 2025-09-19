@@ -82,14 +82,15 @@ body {
   padding: 12px;
   background-color: var(--background);
   font-size: 0.9rem;
-  /* YTMND-style background */
+  /* YTMND-style background with Sean Connery image and fallback pattern */
   background-image: 
+    url('https://github.com/user-attachments/assets/d62cf85a-4b11-45f7-98bb-0efee1871bf6'),
     radial-gradient(circle at 25% 25%, #8B4513 20%, transparent 21%),
     radial-gradient(circle at 75% 75%, #654321 20%, transparent 21%),
     linear-gradient(45deg, #A0522D 25%, transparent 25%),
     linear-gradient(-45deg, #8B4513 25%, transparent 25%);
-  background-size: 50px 50px, 50px 50px, 100px 100px, 100px 100px;
-  background-position: 0 0, 25px 25px, 0 0, 50px 50px;
+  background-size: 200px 200px, 50px 50px, 50px 50px, 100px 100px, 100px 100px;
+  background-position: 0 0, 0 0, 25px 25px, 0 0, 50px 50px;
   background-repeat: repeat;
 }
 
