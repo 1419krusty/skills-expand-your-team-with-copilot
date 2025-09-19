@@ -272,11 +272,11 @@ document.addEventListener("DOMContentLoaded", () => {
   function setTheme(theme) {
     if (theme === "dark") {
       document.body.classList.add("dark-mode");
-      themeIcon.textContent = "☀️";
+      themeIcon.textContent = "🌕";
       localStorage.setItem("theme", "dark");
     } else {
       document.body.classList.remove("dark-mode");
-      themeIcon.textContent = "🌙";
+      themeIcon.textContent = "☀️";
       localStorage.setItem("theme", "light");
     }
   }
