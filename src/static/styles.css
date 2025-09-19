@@ -801,6 +801,12 @@ footer {
   border-right: none;
 }
 
+/* Make Monday header black */
+.day-column:nth-child(3) {
+  background-color: #000000;
+  color: #ffffff;
+}
+
 .calendar-grid {
   display: grid;
   grid-template-columns: 80px repeat(7, 1fr);
