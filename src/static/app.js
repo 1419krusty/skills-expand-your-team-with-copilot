@@ -26,6 +26,10 @@ document.addEventListener("DOMContentLoaded", () => {
   const closeLoginModal = document.querySelector(".close-login-modal");
   const loginMessage = document.getElementById("login-message");
 
+  // Theme toggle elements
+  const themeToggle = document.getElementById("theme-toggle");
+  const themeIcon = document.getElementById("theme-icon");
+
   // Activity categories with corresponding colors
   const activityTypes = {
     sports: { label: "Sports", color: "#e8f5e9", textColor: "#2e7d32" },
@@ -258,10 +262,37 @@ document.addEventListener("DOMContentLoaded", () => {
     }, 300);
   }
 
+  // Theme toggle functions
+  function initializeTheme() {
+    // Check for saved theme preference or default to light mode
+    const savedTheme = localStorage.getItem("theme") || "light";
+    setTheme(savedTheme);
+  }
+
+  function setTheme(theme) {
+    if (theme === "dark") {
+      document.body.classList.add("dark-mode");
+      themeIcon.textContent = "☀️";
+      localStorage.setItem("theme", "dark");
+    } else {
+      document.body.classList.remove("dark-mode");
+      themeIcon.textContent = "🌙";
+      localStorage.setItem("theme", "light");
+    }
+  }
+
+  function toggleTheme() {
+    const isDarkMode = document.body.classList.contains("dark-mode");
+    setTheme(isDarkMode ? "light" : "dark");
+  }
+
   // Event listeners for authentication
   loginButton.addEventListener("click", openLoginModal);
   logoutButton.addEventListener("click", logout);
   closeLoginModal.addEventListener("click", closeLoginModalHandler);
+
+  // Event listener for theme toggle
+  themeToggle.addEventListener("click", toggleTheme);
 
   // Close login modal when clicking outside
   window.addEventListener("click", (event) => {
@@ -905,5 +936,6 @@ document.addEventListener("DOMContentLoaded", () => {
   // Initialize app
   checkAuthentication();
   initializeFilters();
+  initializeTheme();
   fetchActivities();
 });
