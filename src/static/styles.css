@@ -82,6 +82,15 @@ body {
   padding: 12px;
   background-color: var(--background);
   font-size: 0.9rem;
+  /* YTMND-style background */
+  background-image: 
+    radial-gradient(circle at 25% 25%, #8B4513 20%, transparent 21%),
+    radial-gradient(circle at 75% 75%, #654321 20%, transparent 21%),
+    linear-gradient(45deg, #A0522D 25%, transparent 25%),
+    linear-gradient(-45deg, #8B4513 25%, transparent 25%);
+  background-size: 50px 50px, 50px 50px, 100px 100px, 100px 100px;
+  background-position: 0 0, 25px 25px, 0 0, 50px 50px;
+  background-repeat: repeat;
 }
 
 header {
@@ -724,4 +733,31 @@ footer {
 
 #logout-button:hover {
   background-color: rgba(255, 255, 255, 0.3);
+}
+
+/* YTMND Text Overlay */
+#ytmnd-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 2rem;
+  font-weight: bold;
+  color: #FFD700;
+  text-shadow: 2px 2px 4px #000000, -2px -2px 4px #000000, 2px -2px 4px #000000, -2px 2px 4px #000000;
+  z-index: 10;
+  text-align: center;
+  animation: pulse 2s infinite;
+  pointer-events: none;
+}
+
+@keyframes pulse {
+  0% { opacity: 0.8; transform: translate(-50%, -50%) scale(1); }
+  50% { opacity: 1; transform: translate(-50%, -50%) scale(1.05); }
+  100% { opacity: 0.8; transform: translate(-50%, -50%) scale(1); }
+}
+
+/* Make header position relative for absolute positioning of YTMND text */
+header {
+  position: relative;
 }

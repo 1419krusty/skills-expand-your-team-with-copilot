@@ -933,9 +933,33 @@ document.addEventListener("DOMContentLoaded", () => {
     setTimeRangeFilter,
   };
 
+  // YTMND Audio functionality
+  function initializeYTMNDAudio() {
+    const audio = document.getElementById('ytmnd-audio');
+    if (audio) {
+      // Set volume to a reasonable level
+      audio.volume = 0.3;
+      
+      // Try to play audio when user first interacts with the page
+      const playAudio = () => {
+        audio.play().catch(e => {
+          console.log('Audio autoplay prevented by browser:', e);
+        });
+        // Remove event listeners after first interaction
+        document.removeEventListener('click', playAudio);
+        document.removeEventListener('keydown', playAudio);
+      };
+      
+      // Add event listeners for user interaction
+      document.addEventListener('click', playAudio);
+      document.addEventListener('keydown', playAudio);
+    }
+  }
+
   // Initialize app
   checkAuthentication();
   initializeFilters();
   initializeTheme();
   fetchActivities();
+  initializeYTMNDAudio();
 });
